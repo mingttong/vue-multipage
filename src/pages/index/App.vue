@@ -1,6 +1,11 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
+  <div>
+    <ul>
+      <li><router-link to="index1">index1</router-link></li>
+      <li><router-link to="index2">index2</router-link></li>
+      <li><router-link to="index3">index3</router-link></li>
+      <li><a href="/test.html">跳转test</a></li>
+    </ul>
     <router-view/>
   </div>
 </template>
@@ -12,12 +17,4 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
