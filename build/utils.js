@@ -13,7 +13,7 @@ const PAGE_PATH = path.resolve(__dirname, '../src/pages');
 // 用于做相应的merge处理
 const merge = require('webpack-merge');
 const config = require('../config')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const packageConfig = require('../package.json')
 
 function getFileName(path) {
@@ -103,11 +103,10 @@ exports.cssLoaders = function (options) {
 
     // Extract CSS when that option is specified
     // (which is the case during production build)
+    // webpack4升级修改
+    // 参考：https://stackoverflow.com/questions/50284111/webpack-4-how-to-use-extracttextplugin-extract
     if (options.extract) {
-      return ExtractTextPlugin.extract({
-        use: loaders,
-        fallback: 'vue-style-loader'
-      })
+      return [MiniCssExtractPlugin.loader].concat(loaders)
     } else {
       return ['vue-style-loader'].concat(loaders)
     }
